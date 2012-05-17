@@ -36,9 +36,9 @@ class block_instructor_profile extends block_base {
         $user = reset(get_users_by_capability($context, 'moodle/course:update'));
 
         if (!$profile = $DB->get_record('block_instructor_profile', $params)) {
-            $this->content->text = $link;
-
-            return $this->content;
+            $profile = new stdClass;
+            $profile->name = fullname($user);
+            $profile->email = $user->email;
         }
 
         $params = array(
@@ -50,8 +50,14 @@ class block_instructor_profile extends block_base {
         $out  = $OUTPUT->user_picture($user, $params);
         $out .= html_writer::tag('p', $profile->name);
         $out .= html_writer::tag('p', $profile->email);
-        $out .= html_writer::tag('p', $profile->phone);
-        $out .= html_writer::tag('p', implode('<br />', explode("\n", $profile->other)));
+
+        if (!empty($profile->phone)) {
+            $out .= html_writer::tag('p', $profile->phone);
+        }
+
+        if (!empty($profile->other)) {
+            $out .= html_writer::tag('p', implode('<br />', explode("\n", $profile->other)));
+        }
 
         $this->content->text = $out . $link;
 
