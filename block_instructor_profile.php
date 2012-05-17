@@ -12,7 +12,7 @@ class block_instructor_profile extends block_base {
     }
 
     function get_content() {
-        global $COURSE, $DB, $OUTPUT, $USER;
+        global $COURSE, $DB, $OUTPUT;
 
         $_s = function($key) { return get_string($key, 'block_instructor_profile'); };
 
