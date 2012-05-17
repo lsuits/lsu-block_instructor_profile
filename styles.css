@@ -1,9 +1,42 @@
+.block_instructor_profile .content {
+  text-align: center;
+}
+
 .block_instructor_profile .content img.userpicture {
   width: 100px;
   height: 100px;
+  border: 1px solid #333;
   border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  margin: 5px auto;
+  box-shadow: 0 0 15px #bbbbbb;
 }
 
 .block_instructor_profile .content p {
-  margin-bottom: 4px;
+  margin: 5px;
+  text-align: left;
+}
+
+.block_instructor_profile .content a.edit {
+   display: inline-block;
+   width: 2em;
+   background: #eeeeee url([[pix:theme|input_button]]) 0 -142px repeat-x;
+   padding: 2px 10px;
+   border: 1px solid #461d7c;
+   color: #2e1352;
+   cursor: pointer;
+   border-radius: 3px;
+   -moz-border-radius: 3px;
+   -webkit-border-radius: 3px;
+   -webkit-appearance: none;
+   margin-bottom: 5px;
+}
+
+.block_instructor_profile .content a.edit:hover {
+   background-color: #461d7c;
+   background-position: 0 -50px;
+   color: #ffffff;
+   cursor: pointer;
+   text-decoration: none;
 }
