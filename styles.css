@@ -1,0 +1,9 @@
+.block_instructor_profile .content img.userpicture {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+}
+
+.block_instructor_profile .content p {
+  margin-bottom: 4px;
+}
