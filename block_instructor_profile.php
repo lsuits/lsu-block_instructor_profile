@@ -28,7 +28,7 @@ class block_instructor_profile extends block_base {
 
         if (has_capability('moodle/course:update', $context)) {
             $url = new moodle_url('/blocks/instructor_profile/edit.php', $params);
-            $link = html_writer::link($url, $_s('edit'));
+            $link = html_writer::link($url, $_s('edit'), array('class' => 'edit'));
         } else {
             $link = '';
         }
