@@ -62,6 +62,8 @@ class block_instructor_profile extends block_base {
             'link' => false,
         );
 
+        $user->imagealt = fullname($user);
+
         $out  = $OUTPUT->user_picture($user, $params);
         $out .= html_writer::tag('p', $profile->name);
         $out .= html_writer::tag('p', $profile->email);
