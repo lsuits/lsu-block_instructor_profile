@@ -34,7 +34,9 @@ if (!$profile = $DB->get_record('block_instructor_profile', $params)) {
     $update = true;
 }
 
-if ($form_data = $form->get_data()) {
+if ($form->is_cancelled()) {
+    redirect(new moodle_url('/course/view.php', array('id' => $courseid)));
+} else if ($form_data = $form->get_data()) {
     $profile->courseid = $form_data->courseid;
     $profile->name = $form_data->name;
     $profile->email = $form_data->email;
@@ -50,12 +52,12 @@ if ($form_data = $form->get_data()) {
     $url = new moodle_url('/course/view.php', array('id' => $courseid));
 
     redirect($url);
-} else {
-    echo $OUTPUT->header();
-    echo $OUTPUT->heading($blockname);
-
-    $form->set_data($profile);
-    $form->display();
 }
+
+echo $OUTPUT->header();
+echo $OUTPUT->heading($blockname);
+
+$form->set_data($profile);
+$form->display();
 
 echo $OUTPUT->footer();

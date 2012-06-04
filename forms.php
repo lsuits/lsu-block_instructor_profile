@@ -14,7 +14,17 @@ class instructor_profile_edit_form extends moodleform {
         $mform->setType('courseid', PARAM_INT);
 
         $context = get_context_instance(CONTEXT_COURSE, $COURSE->id);
-        $user = reset(get_users_by_capability($context, 'moodle/course:update'));
+
+        $roles = reset(get_roles_with_cap_in_context($context, 'moodle/course:update'));
+
+        foreach ($roles as $role) {
+            $users = get_role_users($role, $context);
+
+            if (!empty($users)) {
+                $user = reset($users);
+                break;
+            }
+        }
 
         $mform->addElement('header', 'general', $_s('edit'));
 

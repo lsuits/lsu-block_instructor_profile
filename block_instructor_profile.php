@@ -33,7 +33,22 @@ class block_instructor_profile extends block_base {
             $link = '';
         }
 
-        $user = reset(get_users_by_capability($context, 'moodle/course:update'));
+        // Needed roles
+        $roles = reset(get_roles_with_cap_in_context($context, 'moodle/course:update'));
+
+        foreach ($roles as $role) {
+            $users = get_role_users($role, $context);
+
+            if (!empty($users)) {
+                $user = reset($users);
+                break;
+            }
+        }
+
+        // No Instructor was found at this context
+        if (empty($user)) {
+            return $this->content;
+        }
 
         if (!$profile = $DB->get_record('block_instructor_profile', $params)) {
             $profile = new stdClass;
