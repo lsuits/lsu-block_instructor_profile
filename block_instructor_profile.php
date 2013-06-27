@@ -34,7 +34,8 @@ class block_instructor_profile extends block_base {
         }
 
         // Needed roles
-        $roles = reset(get_roles_with_cap_in_context($context, 'moodle/course:update'));
+        $needed_roles = get_roles_with_cap_in_context($context, 'moodle/course:update');
+        $roles = reset($needed_roles);
 
         foreach ($roles as $role) {
             $users = get_role_users($role, $context);
