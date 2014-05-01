@@ -13,7 +13,7 @@ class instructor_profile_edit_form extends moodleform {
         $mform->addElement('hidden', 'courseid', $COURSE->id);
         $mform->setType('courseid', PARAM_INT);
 
-        $context = get_context_instance(CONTEXT_COURSE, $COURSE->id);
+        $context = context_course::instance(CONTEXT_COURSE, $COURSE->id);
 
         $valid_roles = get_roles_with_cap_in_context($context, 'moodle/course:update');
         $roles = reset($valid_roles);

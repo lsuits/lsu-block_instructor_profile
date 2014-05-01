@@ -12,7 +12,7 @@ require_login($courseid);
 
 $blockname = $_s('pluginname');
 
-$context = get_context_instance(CONTEXT_COURSE, $courseid);
+$context = context_course::instance($courseid);
 
 require_capability('moodle/course:update', $context);
 
