@@ -13,7 +13,7 @@ class instructor_profile_edit_form extends moodleform {
         $mform->addElement('hidden', 'courseid', $COURSE->id);
         $mform->setType('courseid', PARAM_INT);
 
-        $context = get_context_instance(CONTEXT_COURSE, $COURSE->id);
+        $context = context_course::instance($COURSE->id);
 
         $valid_roles = get_roles_with_cap_in_context($context, 'moodle/course:update');
         $roles = reset($valid_roles);
@@ -31,7 +31,7 @@ class instructor_profile_edit_form extends moodleform {
 
         $mform->addElement('text', 'name', get_string('name'), array('value' => fullname($user)));
         $mform->setType('name', PARAM_TEXT);
-        
+
         $mform->addElement('text', 'email', get_string('email'), array('value' => $user->email));
         $mform->setType('email', PARAM_EMAIL);
         

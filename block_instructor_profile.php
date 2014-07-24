@@ -20,7 +20,7 @@ class block_instructor_profile extends block_base {
             return $this->content;
         }
 
-        $context = get_context_instance(CONTEXT_COURSE, $COURSE->id);
+        $context = context_course::instance($COURSE->id);
 
         $this->content = new stdClass;
 
