@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2015020200;
+$plugin->version = 2017081102;
 $plugin->requires = 2015051102;
 $plugin->component = 'block_instructor_profile';
 $plugin->maturity = MATURITY_STABLE;

@@ -39,6 +39,7 @@ if ($form->is_cancelled()) {
 } else if ($form_data = $form->get_data()) {
     $profile->courseid = $form_data->courseid;
     $profile->name = $form_data->name;
+    $profile->username = $form_data->username;
     $profile->email = $form_data->email;
     $profile->phone = $form_data->phone;
     $profile->other = $form_data->other;
